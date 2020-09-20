@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habitualize/screens/habitForm/habitForm.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,6 +12,16 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Habitualize')
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          // navigate to new habit form
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HabitForm())
+          );
+        },
       ),
     );
   }
