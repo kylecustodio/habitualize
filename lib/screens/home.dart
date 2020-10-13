@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:habitualize/screens/habitForm/habitForm.dart';
+import 'package:habitualize/screens/habitForm.dart';
 
 class Home extends StatefulWidget {
   @override
