@@ -1,6 +1,18 @@
+enum HabitType {
+  buildHabit,
+  breakHabit
+}
+
+enum GoalType {
+  simple,
+  counter,
+}
+
 class Habit {
   String name;
-  DateTime startDate;
+  HabitType habitType;
+  GoalType goalType;
+  int goalNum;
 
-  Habit({this.name, this.startDate});
+  Habit({this.name, this.habitType, this.goalType, this.goalNum});
 }
