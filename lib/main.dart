@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'theme/style.dart';
-import 'screens/home/home.dart';
+import 'screens/home.dart';
 
 void main() {
   runApp(Habitualize());
