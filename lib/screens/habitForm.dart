@@ -11,9 +11,7 @@ class _HabitFormState extends State<HabitForm> {
   final _formKey = GlobalKey<FormState>();
 
   String _habitName;
-  // HabitType _habitType = HabitType.buildHabit;
-  // GoalType _goalType = GoalType.simple;
-  // int _goalNum;
+  int _goalCount;
 
   @override
   Widget build(BuildContext context) {
@@ -42,96 +40,39 @@ class _HabitFormState extends State<HabitForm> {
                 ),
               ),
             ),
-            // SizedBox(height: 20),
-            // Center(child: Text('Habit Type', style: TextStyle(fontSize: 16))),
-            // ButtonBar(
-            //   alignment: MainAxisAlignment.center,
-            //   children: [
-            //     FlatButton(
-            //       onPressed: () =>
-            //           setState(() => _habitType = HabitType.buildHabit),
-            //       child: Text('Build'),
-            //       color: _habitType == HabitType.buildHabit
-            //           ? Colors.teal[100]
-            //           : Colors.transparent,
-            //       textColor: Colors.black,
-            //       hoverColor: Colors.teal[100],
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8)),
-            //     ),
-            //     FlatButton(
-            //       onPressed: () =>
-            //           setState(() => _habitType = HabitType.breakHabit),
-            //       child: Text('Break'),
-            //       color: _habitType == HabitType.breakHabit
-            //           ? Colors.red[100]
-            //           : Colors.transparent,
-            //       textColor: Colors.black,
-            //       hoverColor: Colors.red[100],
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8)),
-            //     ),
-            //   ],
-            // ),
-            // SizedBox(height: 20),
-            // Center(child: Text('Goal Type', style: TextStyle(fontSize: 16))),
-            // ButtonBar(
-            //   alignment: MainAxisAlignment.center,
-            //   children: [
-            //     FlatButton(
-            //       onPressed: () => setState(() => _goalType = GoalType.simple),
-            //       child: Text('Simple'),
-            //       color: _goalType == GoalType.simple
-            //           ? Colors.teal[100]
-            //           : Colors.transparent,
-            //       textColor: Colors.black,
-            //       hoverColor: Colors.teal[100],
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8)),
-            //     ),
-            //     FlatButton(
-            //       onPressed: () => setState(() => _goalType = GoalType.counter),
-            //       child: Text('Counter'),
-            //       color: _goalType == GoalType.counter
-            //           ? Colors.teal[100]
-            //           : Colors.transparent,
-            //       textColor: Colors.black,
-            //       hoverColor: Colors.teal[100],
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(8)),
-            //     ),
-            //   ],
-            // ),
-            // SizedBox(height: 20),
-            // Visibility(
-            //   visible: _goalType == GoalType.counter,
-            //   child: Column(
-            //     children: [
-            //       Text('Goal', style: TextStyle(fontSize: 16)),
-            //       SizedBox(height: 10),
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           Container(
-            //             width: MediaQuery.of(context).size.width * 0.15,
-            //             child: TextFormField(
-            //               onChanged: (text) => _goalNum = int.parse(text),
-            //               textAlign: TextAlign.center,
-            //               keyboardType: TextInputType.number,
-            //               inputFormatters: <TextInputFormatter>[
-            //                 FilteringTextInputFormatter.digitsOnly
-            //               ],
-            //             ),
-            //           ),
-            //           SizedBox(
-            //             width: 10,
-            //           ),
-            //           Text('times', style: TextStyle(fontSize: 14)),
-            //         ],
-            //       )
-            //     ],
-            //   ),
-            // )
+            SizedBox(height: 20),
+            Column(
+              children: [
+                Text('Goal', style: TextStyle(fontSize: 16)),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.2,
+                      child: TextFormField(
+                        onChanged: (text) => _goalCount = int.parse(text),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Cannot be empty';
+                          }
+                          return null;
+                        },
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text('times', style: TextStyle(fontSize: 14)),
+                  ],
+                )
+              ],
+            )
           ],
         ),
       ),
@@ -149,9 +90,7 @@ class _HabitFormState extends State<HabitForm> {
             // Save Habit
             Navigator.of(context).pop(Habit(
               name: _habitName,
-              // habitType: _habitType,
-              // goalType: _goalType,
-              // goalNum: _goalType == GoalType.counter ? _goalNum : 1,
+              goalCount: _goalCount,
             ));
           }
         },

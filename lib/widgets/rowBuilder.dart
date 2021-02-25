@@ -28,7 +28,7 @@ class _RowBuilderState extends State<RowBuilder> {
           alignment: Alignment.centerLeft,
           children: [
             HabitProgress(
-              progress: widget.habit.isDone ? 1.0 : 0.0,
+              progress: widget.habit.currentCount / widget.habit.goalCount,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
