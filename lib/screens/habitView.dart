@@ -37,7 +37,9 @@ class _HabitViewState extends State<HabitView> {
                         icon: Icon(Icons.remove), 
                         onPressed: () {
                           setState(() {
-                            widget.habit.currentCount--;
+                            if(widget.habit.currentCount > 0) {
+                              widget.habit.currentCount--;
+                            }
                           });
                         }
                       ),
