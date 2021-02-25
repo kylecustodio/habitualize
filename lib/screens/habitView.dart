@@ -26,19 +26,36 @@ class _HabitViewState extends State<HabitView> {
                 style: TextStyle(fontSize: 32),
               ),
               SizedBox(height: 20),
-              
-              // SizedBox(height: 20),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     Column(
-              //       children: [Text('Current Streak'), Text('5')],
-              //     ),
-              //     Column(
-              //       children: [Text('Longest Streak'), Text('5')],
-              //     )
-              //   ],
-              // )
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  HabitProgress(progress: widget.habit.currentCount / widget.habit.goalCount),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.remove), 
+                        onPressed: () {
+                          setState(() {
+                            widget.habit.currentCount--;
+                          });
+                        }
+                      ),
+                      Text(
+                        widget.habit.currentCount.toString(),
+                        style: TextStyle(fontSize: 32),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add), 
+                        onPressed: () {
+                          setState(() {
+                            widget.habit.currentCount++;
+                          });
+                        }
+                      )
+                    ],
+                  )
+              ])
             ],
           ),
         ),
