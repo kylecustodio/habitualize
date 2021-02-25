@@ -20,9 +20,11 @@ class _RowBuilderState extends State<RowBuilder> {
       child: InkWell(
         onTap: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => HabitView(habit: widget.habit)));
+            context,
+            MaterialPageRoute(
+              builder: (context) => HabitView(habit: widget.habit)
+            )
+          ).then((value) => setState(() => {}));
         },
         child: Stack(
           alignment: Alignment.centerLeft,
